@@ -14,7 +14,7 @@ public class ShoppingCartState{
   final static String MAINMENU =  ""+
         "SHOPPING CART OPTIONS                                                  \n\t"+
           "a. Display Current Shopping Cart                       (DISPLAYSHOPPINGCART)\n\t"+
-	        "b. Add or Remove Products                              (MODIFYSHOPPINGCART)\n\t"+
+	  "b. Add or Remove Products                              (MODIFYSHOPPINGCART)\n\t"+
           "c. Exit Shopping Cart                                  (EXITSHOPPINGCART)\n\t"+
 
 
