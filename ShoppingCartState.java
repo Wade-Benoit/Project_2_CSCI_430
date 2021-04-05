@@ -107,7 +107,7 @@ public class ShoppingCartState{
 		Scanner input = new Scanner(System.in);
 		String inputStr = "";
 		System.out.println(MAINMENU);
-		while(!inputStr.equals("exit") && !inputStr.equals("c") && !inputStr.equals("C")){
+		while(!inputStr.equals("exit")){
 			inputStr = input.next();
 
 			switch(inputStr.toUpperCase()){
@@ -129,7 +129,8 @@ public class ShoppingCartState{
           break;
 					
         case "C":
-	System.out.println("Exiting System...");
+	System.out.println("Exiting Shopping Cart..");
+          	ClientMenuState.processInput(w); //Swtitch states back to the ClientMenuState
           break;
 					
 	case default :
