@@ -18,7 +18,7 @@ public class ClientQueryState {
           "a. Show list of clients                           (DISPLAYALLCLIENTS)\n\t"+
           "b. Show list of clients with outstanding balance  (DISPLAYALLOUTSTANDINGCLIENTS)\n\t"+
 	        "c. Show list of clients with no transactions      (DISPLAYZEROTRANSACTIONCLIENTS)\n\t"+
-	        "d. Logout                                                            \n\n";
+	        "d. Logout                                                            \n\n"; //Returns back to ClerkMenuState
 
 
   //instance()
@@ -72,7 +72,7 @@ public class ClientQueryState {
 		Scanner input = new Scanner(System.in);
 		String inputStr = "";
 		System.out.println(MAINMENU);
-		while(!inputStr.equals("exit") && !inputStr.equals("d") && !inputStr.equals("D") && !inputStr.equals("logout")){ //This is where logging out is handled
+		while(!inputStr.equals("exit") && !inputStr.equals("EXIT")){ //This is where logging out is handled
 			inputStr = input.next();
 
 			
@@ -97,9 +97,11 @@ public class ClientQueryState {
           displayZeroTransactionClients();
           break;
 			
-	case "D":     //THIS CASE WILL NEVER BE REACHED, WILL BE CAUGHT AS PARAMETER 
+	case "D":    
         case "LOGOUT":
-        case "EXIT":
+        case "ESCAPE":
+	case "BACK":
+	   ClerkMenuState.processInput(w); //Reverts back to ClerkMenuState 
          break;
 			
 	}//END SWITCH-CASE	
