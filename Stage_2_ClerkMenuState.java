@@ -17,13 +17,11 @@ public class ClerkMenuState{
         "CLERK MENU OPTIONS                                                  \n\t"+ //The Menu Display String of options for the Clerk State
           "a. Add A Client                                        (ADDCLIENT)\n\t"+
           "b. Show list of products                      (DISPLAYALLPRODUCTS)\n\t"+
-          "c. Show list of clients                        (DISPLAYALLCLIENTS)\n\t"+
-          "d. Show list of clients with outstanding balance (DISPLAYINVOICES)\n\t"+
-          "e. Become a client                                                \n\t"+
-          "f. Display the waitlist for a product               (SHOWWAITLIST)\n\t"+
-          "g. Receive a shipment                                (ADDSHIPMENT)\n\t"+
-          "h. Record a payment from a client.                                \n\t"+
-          "i. Logout                                                         \n\n";
+          "c. Become a client                                                \n\t"+
+          "d. Display the waitlist for a product               (SHOWWAITLIST)\n\t"+
+          "e. Receive a shipment                                (ADDSHIPMENT)\n\t"+
+          "f. Record a payment from a client.                                \n\t"+
+          "g. Logout                                                         \n\n";
 
 
 
@@ -78,32 +76,15 @@ public class ClerkMenuState{
   }//end addClient()
 
   
-	//displayAllProducts()
+  //displayAllProducts()
   //Displays all of the current Product objects in the system with an iterator object
 	private static void displayAllProducts(){
 		Iterator it = warehouse.getProducts();
 		while(it.hasNext() )
 			System.out.println(it.next().toString());
 	}//end displayAllProducts
-
-	//displayAllClients()
-  //Displays all of the Client objects currently recorded in the system
-	private static void displayAllClients(){
-		Iterator it = warehouse.getClients();
-		while(it.hasNext() )
-			System.out.println(it.next().toString());
-	}//end displayAllClients
   
   
-  //displayAllOutstandingClients()
-  //Displays all of the Client objects currently in the system with an outstanding balance
-  private static void displayAllOutstandingClients(){
-		Iterator it = warehouse.getClients();
-		while(it.hasNext() ) {
-      if(it.getClientBalance < 0)
-			  System.out.println(it.next().toString());
-    }
-  }//end displayAllOutstandingcClients()
   
   
   //displayInvoices()
@@ -233,52 +214,65 @@ public class ClerkMenuState{
 		while(!inputStr.equals("exit") && !inputStr.equals("i") && !inputStr.equals("logout")){
 			inputStr = input.next();
 
-			switch(inputStr.toUpperCase()){
-				case "EXIT":
-					System.out.println("Exiting Clerk Operations\n");
-          break;
+			
+			
+switch(inputStr.toUpperCase()) {
+		
+	case "EXIT":
+		System.out.println("Exiting Clerk Operations\n");
+        	break;
+		
+		
         case "A":
-				case "ADDCLIENT":
-				case "ADDACLIENT":
-					addClient();
-          break;
+	case "ADDCLIENT":
+	case "ADDACLIENT":
+		addClient();
+       	        break;
+					
+					
         case "B":
         case "DISPLAYALLPRODUCTS":
         case "SHOWLISTOFPRODUCTS":
-          displayAllProducts();
-          break;
+        	displayAllProducts();
+       	        break;
+					
+					
         case "C":
-        case "DISPLAYALLCLIENTS":
-        case "SHOWLISTOFCLIENTS":
-          displayAllClients();
-          break;
+	callClient(); //Switches State to Client State -- Become A Client
+        break;
+					
+					
         case "D":
-        case "DISPLAYINVOICES":
-        case "SHOWLISTOFCLIENTSWITHOUTSTANDINGBALANCE":
-          displayInvoices();
-          break;
-        case "E":
-					callClient();
-          break;
-        case "F":
         case "SHOWWAITLIST":
         case "DISPLAYTHEWAITLISTFORAPRODUCT":
-          showWaitList();
-          break;
-        case "G":
-				case "ADDSHIPMENT":
-				case "RECEIVEASHIPMENT":
-					addShipment();
-          break;
-        case "H":
-					System.out.println("WARNING: Record a payment from a client unavailable");
-          break;
-        case "I":
-          break;
+       		 showWaitList();
+                 break;
+					
+					
+        case "E":
+	case "ADDSHIPMENT":
+	case "RECEIVEASHIPMENT":
+		addShipment();
+        	break;
+					
+					
+        case "F":
+		System.out.println("WARNING: Record a payment from a client unavailable");
+       	        break;
+					
+	
+					
+         case "G":
+	 	System.out.println("Logging out of client\n"); ///////////////////
+                break;
+					
+					
         default:
-          System.out.print("ERROR: Invalid option\n" + MAINMENU);
-          break;
+        	System.out.print("ERROR: Invalid option\n" + MAINMENU);
+        	break;
       }//end switch
     }//end while
   }//end processInput
 }//end ClerkMenuState class
+
+
