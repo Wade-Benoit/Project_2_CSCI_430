@@ -21,7 +21,7 @@ public class ClerkMenuState{
           "d. Display the waitlist for a product               (SHOWWAITLIST)\n\t"+
           "e. Receive a shipment                                (ADDSHIPMENT)\n\t"+
           "f. Record a payment from a client.                                \n\t"+
-	  "g. Query Clients                                                  \n\t"+ //Added for Stage 2, switches to QueryClientState
+	  "g. Query Clients                                                  \n\t"+ //Added for Stage 2, switches to ClientQueryState
           "h. Logout                                                         \n\n";
 
 
