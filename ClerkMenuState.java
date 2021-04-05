@@ -21,7 +21,8 @@ public class ClerkMenuState{
           "d. Display the waitlist for a product               (SHOWWAITLIST)\n\t"+
           "e. Receive a shipment                                (ADDSHIPMENT)\n\t"+
           "f. Record a payment from a client.                                \n\t"+
-          "g. Logout                                                         \n\n";
+	  "g. Query Clients                                                  \n\t"+ //Added for Stage 2, switches to QueryClientState
+          "h. Logout                                                         \n\n";
 
 
 
@@ -261,9 +262,14 @@ switch(inputStr.toUpperCase()) {
        	        break;
 					
 	
-					
-         case "G":
-	 	System.out.println("Logging out of client\n"); ///////////////////
+        case "G":
+	case "CLIENTQUERY":
+	case "QUERY":
+	 	ClientQueryState.processInput(w);  //Switches states to the ClientQueryState
+		
+		
+         case "H":
+	 	System.out.println("Logging out of client\n"); 
                 break;
 					
 					
