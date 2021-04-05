@@ -16,8 +16,9 @@ public class ClientMenuState{
           "b. Show list of products                                     (DISPLAYPRODUCTSLIST)\n\t"+
           "c. Show client transactions                                  (DISPLAYCLIENTTRANSACTIONS)\n\t"+
           "d. Add client shopping cart                                  (ADDSHOPPINGCART)\n\t"+
-          "e. Display the client waitlist                               (DISPLAYCLIENTWAITLIST)\n\t"+
-          "f. Logout                                                         \n\n";
+	  "e. Edit client shopping cart                                  (EDITSHOPPINGCART)\n\t"+  //Switches states to ShoppingCartState
+          "f. Display the client waitlist                               (DISPLAYCLIENTWAITLIST)\n\t"+
+          "g. Logout                                                         \n\n";
 
 
 	//getProductId (Helper Function)
@@ -113,23 +114,26 @@ public class ClientMenuState{
 		Scanner input = new Scanner(System.in);
 		String inputStr = "";
 		System.out.println(MAINMENU);
-		while(!inputStr.equals("exit") && !inputStr.equals("f") && !inputStr.equals("F")){
+		while(!inputStr.equals("exit") && !inputStr.equals("g") && !inputStr.equals("G")){
 			inputStr = input.next();
 
 			switch(inputStr.toUpperCase()){
 				case "EXIT":
 					System.out.println("Exiting warehouse operations\n");
           break;
+					
         case "A":
 				case "DISPLAYCLIENTDETAILS":
 				case "SHOWCLIENTDETAIL  ":
 					displayClientsDetails();
           break;
+					
         case "B":
         case "DISPLAYPRODUCTSLIST":
         case "SHOWLISTOFPRODUCTS":
           displayProductList();
           break;
+					
         case "C":
         case "DISPLAYCLIENTTRANSACTIONS":
         case "SHOWCLIENTTRANSACTIONS":
@@ -140,11 +144,18 @@ public class ClientMenuState{
 					System.out.println("WARNING: Add client shopping cart unavailable");
 					break;
         case "E":
-        case "Add":
+        case "ADD":
         case "DISPLAYTHECLIENTWAITLIST":
           showWaitList();
           break;
+					
         case "F":
+	case "EDIT":
+	case "SHOPPINGCART":
+		        ShoppingCartState.processInput(w); //Switches State to the ShoppingCartState()
+          break;
+					
+        case "G":
 					System.out.println("Logging out of client\n");
           break;
 					
